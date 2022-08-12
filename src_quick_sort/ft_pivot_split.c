@@ -6,12 +6,63 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:31:02 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/13 06:50:16 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/13 06:52:17 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <ft_quick_sort.h>
+
+#include <stdio.h>
+int ft_print_stack(t_d_list *a, t_d_list_header **pivot, char *str)
+{
+	t_d_list *print;
+	int bb;
+
+	char *Y = "\e[103m";
+	char *B = "\e[104m";
+	char *DG = "\e[100m";
+	char *NO = "\e[0m";
+	char *NG = "\033[105m";
+	printf("\e[38;5;196m %s : \t", str);
+	printf("\n\n");
+	if (!a && printf("\e[100m NULL \e[0m\n\n"))
+		return (0);
+	print = a;
+	bb = 0;
+	 printf("\e[100m");
+	while (print)
+	{
+		if (pivot[0] && pivot[0]->head && pivot[0]->head->data == print->data)
+	 		printf("%s", Y);
+		if (pivot[1] && pivot[1]->head && pivot[1]->head->data == print->data)
+			printf("%s", NG);
+		if (pivot[2] && pivot[2]->head && pivot[2]->head->data == print->data)
+			printf("%s", B);
+		if (pivot[3] && pivot[3]->head && pivot[3]->head->data == print->data)
+			printf("%s", B);
+		if (pivot[4] && pivot[4]->head && pivot[4]->head->data == print->data)
+			printf("%s", B);
+		printf("  %d  \t", *(int *)print->data);
+		printf("%s", DG);
+		print = print->next;
+		bb++;
+		if (print && (print->data == a->data || bb > 10))
+			break;
+	}
+	printf("\e[0m\n\n");
+	return (1);
+}
+
+void ft_print_ab(t_d_list_header *a, t_d_list_header *b, t_d_list_header **pivot)
+{
+	printf("\n ==================\n");
+	ft_print_stack(a->head, pivot,"a : ");
+	ft_print_stack(b->head, pivot,"b : ");
+	printf("\n ==================\n");
+	sleep(1);
+}
+
 
 t_d_list	*ft_pivot_split(t_d_list_header *a, t_d_list_header *b, \
 	t_d_list_header **pivot, int deep)
@@ -31,6 +82,7 @@ t_d_list	*ft_pivot_split(t_d_list_header *a, t_d_list_header *b, \
 	}
 	while (b->head)
 		ft_pa(a, b);
+	ft_print_ab(a,b, pivot);
 	return (a->head);
 }
 
