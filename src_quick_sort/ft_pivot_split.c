@@ -6,12 +6,13 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:31:02 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/13 06:50:16 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/13 09:00:01 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <ft_quick_sort.h>
+#include <ft_push_swap.h>
 
 t_d_list	*ft_pivot_split(t_d_list_header *a, t_d_list_header *b, \
 	t_d_list_header **pivot, int deep)
@@ -63,7 +64,7 @@ int	ft_pivot_split_b_left(t_d_list_header *a, t_d_list_header *b, \
 	check = (int [2]){0, 0};
 	pivot[++(*deep)]->head = b->head;
 	if (!a->head)
-		pivot[1] = pivot[*deep];
+		ft_memcpy(pivot[1], pivot[*deep], sizeof(t_d_list_header));
 	if (b->head && ft_pa(a, b))
 		ft_ra(a);
 	while (b->head && pivot[0]->head != b->head)
@@ -94,14 +95,14 @@ int	ft_pivot_split_a_right(t_d_list_header *a, t_d_list_header *b, \
 	pivot_data = *pivot[*deep];
 	pivot[*deep]->head = a->tail;
 	if (a->tail && ft_rra(a) && ft_pb(a, b) && ft_rb(b))
-		while (a->tail && pivot_data.tail != a->tail && ++check[0])
+		while (a->tail && pivot_data.head != a->tail && ++check[0])
 			if (ft_rra(a) && ft_pb(a, b))
 				if (*(pivot[*deep]->head->data) < *b->head->data)
 					check[1] += ft_rb(b);
 	if (a->tail && pivot_data.head == a->tail && ft_rra(a))
 		ft_pb(a, b);
 	pivot[*deep]->tail = b->tail;
-	if (a->head)
+	if (!a->head)
 		ft_bzero(pivot[1], sizeof(t_d_list_header));
 	return (check[0] - check[1]);
 }
@@ -122,7 +123,7 @@ int	ft_pivot_split_b_right(t_d_list_header *a, t_d_list_header *b, \
 	pivot_data = *pivot[*deep];
 	pivot[*deep]->head = b->tail;
 	if (!a->head)
-		pivot[1] = pivot[*deep];
+		ft_memcpy(pivot[1], pivot[*deep], sizeof(t_d_list_header));
 	if (b->tail && ft_rrb(b) && ft_pa(a, b))
 		ft_ra(a);
 	while (b->tail && pivot_data.head != b->tail && ++check[0] && ft_rrb(b))

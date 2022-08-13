@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 04:29:58 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/13 06:42:56 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/13 08:59:32 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,11 @@ t_d_list	*ft_make_memory(int ar, char **av)
 int	main(int ar, char **av)
 {
 	t_d_list	*memory;
+	t_d_list	*quick_sort;
 
 	if (ft_input_error(ar, av, ft_isdigit))
 		return (0);
 	memory = ft_make_memory(ar, av);
-	ft_quick_sort(memory, ar);
+	quick_sort = ft_quick_sort(memory, ar);
 	return (1);
 }

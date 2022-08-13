@@ -1,6 +1,12 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory `/Users/kyoulee/Documents/git/push_swap'
+cc  -I /Users/kyoulee/Documents/git/push_swap/include -I /Users/kyoulee/Documents/git/push_swap/modules/Libft/include -c /Users/kyoulee/Documents/git/push_swap/src/main.c -o /Users/kyoulee/Documents/git/push_swap/obj/main.o
+ 
+cc -Wall -Werror -Wextra -I /Users/kyoulee/Documents/git/push_swap/include -I /Users/kyoulee/Documents/git/push_swap/modules/Libft/include -L /Users/kyoulee/Documents/git/push_swap/modules/Libft -lft /Users/kyoulee/Documents/git/push_swap/obj/main.o /Users/kyoulee/Documents/git/push_swap/obj/ft_pp.o /Users/kyoulee/Documents/git/push_swap/obj/ft_rr.o /Users/kyoulee/Documents/git/push_swap/obj/ft_rrr.o /Users/kyoulee/Documents/git/push_swap/obj/ft_ss.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_add.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_connect.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_head_add.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_head_pop.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list.o /Users/kyoulee/Documents/git/push_swap/obj/ft_pivot_split.o /Users/kyoulee/Documents/git/push_swap/obj/ft_quick_sort.o -o push_swap
+echo "\033[95mcc \033[34m -Wall -Werror -Wextra"
+(for i in -I /Users/kyoulee/Documents/git/push_swap/include -I /Users/kyoulee/Documents/git/push_swap/modules/Libft/include -L /Users/kyoulee/Documents/git/push_swap/modules/Libft; do echo $i; done)
+echo "-lft \033[96m"
+(for i in /Users/kyoulee/Documents/git/push_swap/obj/main.o /Users/kyoulee/Documents/git/push_swap/obj/ft_pp.o /Users/kyoulee/Documents/git/push_swap/obj/ft_rr.o /Users/kyoulee/Documents/git/push_swap/obj/ft_rrr.o /Users/kyoulee/Documents/git/push_swap/obj/ft_ss.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_add.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_connect.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_head_add.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_head_pop.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list.o /Users/kyoulee/Documents/git/push_swap/obj/ft_pivot_split.o /Users/kyoulee/Documents/git/push_swap/obj/ft_quick_sort.o; do echo $i; done)
+echo "\033[34m-o \033[93mpush_swap"
 make: Leaving directory `/Users/kyoulee/Documents/git/push_swap'
  
-make: *** No targets specified and no makefile found.  Stop.
-
