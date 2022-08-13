@@ -3,6 +3,7 @@
 		"ft_push_swap.h": "c",
 		"stdlib.h": "c",
 		"ft_doubly_list.h": "c",
-		"ft_quick_sort.h": "c"
+		"ft_quick_sort.h": "c",
+		"stdio.h": "c"
 	}
 }
