@@ -8,13 +8,14 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sat Aug 13 08:57:28 2022
+# Make data base, printed on Mon Aug 15 10:50:38 2022
 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
+ 
 ?F = $(notdir $?)
 # makefile (from `Makefile', line 25)
 IFLAGS = -I $(INCLUDE_DIR) -I $(INCLUDE_LIBFT_DIR)
@@ -27,7 +28,6 @@ FG_CYAN = \033[36m
 # makefile (from `Makefile', line 50)
 BG_MAKE2 = \033[48;5;238m
 # automatic
- 
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
 @F = $(notdir $@)
@@ -171,6 +171,7 @@ USER = kyoulee
 .DEFAULT_GOAL := all
 # makefile (from `Makefile', line 70)
 CL_BOLD = \033[1m
+ 
 # makefile (from `Makefile', line 56)
 FG_YELLOW = \033[33m
 # makefile (from `Makefile', line 108)
@@ -278,7 +279,7 @@ BG_LYELLOW = \033[103m
 # makefile (from `Makefile', line 77)
 NO_COLOR = \033[0m
 # variable set hash-table stats:
-# Load=132/1024=13%, Rehash=0, Collisions=21/285=7%
+# Load=132/1024=13%, Rehash=0, Collisions=29/430=7%
 
 # Pattern-specific Variable Values
 
@@ -286,14 +287,13 @@ NO_COLOR = \033[0m
 
 # Directories
 
-# /Users/kyoulee/Documents/git/push_swap/src_doubly_list (device 16777229, inode 4265992): No files, no impossibilities so far.
+# /Users/kyoulee/Documents/git/push_swap/src_doubly_list (device 0, inode 0): No files, 5 impossibilities.
 # . (device 16777229, inode 4264211): 17 files, no impossibilities.
-# /Users/kyoulee/Documents/git/push_swap/src_push_swap (device 16777229, inode 4264316): No files, no impossibilities so far.
-# /Users/kyoulee/Documents/git/push_swap/src (device 16777229, inode 4356333): 3 files, no impossibilities so far.
- 
-# /Users/kyoulee/Documents/git/push_swap/src_quick_sort (device 16777229, inode 4338916): No files, no impossibilities so far.
+# /Users/kyoulee/Documents/git/push_swap/src_push_swap (device 16777229, inode 4264316): 7 files, 5 impossibilities.
+# /Users/kyoulee/Documents/git/push_swap/src (device 16777229, inode 4356333): 3 files, 5 impossibilities.
+# /Users/kyoulee/Documents/git/push_swap/src_quick_sort (device 16777229, inode 4338916): 5 files, 5 impossibilities.
 
-# 20 files, no impossibilities in 5 directories.
+# 32 files, 20 impossibilities in 5 directories.
 
 # Implicit Rules
 
@@ -323,9 +323,12 @@ NO_COLOR = \033[0m
 
 # Not a target:
 /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-13 08:56:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 all: /Users/kyoulee/Documents/git/push_swap/obj push_swap
 #  Phony target (prerequisite of .PHONY).
@@ -335,7 +338,16 @@ all: /Users/kyoulee/Documents/git/push_swap/obj push_swap
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/14=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/159=0%
+
+# Not a target:
+/Users/kyoulee/Documents/git/push_swap/src_push_swap/ft_rr.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-12 15:24:54
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 .PHONY: all re clean fclean clean_libft
 #  Implicit rule search has not been done.
@@ -345,42 +357,38 @@ all: /Users/kyoulee/Documents/git/push_swap/obj push_swap
 /Users/kyoulee/Documents/git/push_swap/obj/main.o: /Users/kyoulee/Documents/git/push_swap/src/main.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `main'
-#  File does not exist.
+#  Last modified 2022-08-13 09:00:34
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := /Users/kyoulee/Documents/git/push_swap/obj/main.o
-# automatic
-# % := 
-# automatic
-# * := main
-# automatic
-# + := /Users/kyoulee/Documents/git/push_swap/src/main.c
-# automatic
-# | := 
-# automatic
-# < := /Users/kyoulee/Documents/git/push_swap/src/main.c
-# automatic
-# ^ := /Users/kyoulee/Documents/git/push_swap/src/main.c
-# automatic
-# ? := /Users/kyoulee/Documents/git/push_swap/src/main.c
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=3/24=12%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 152):
 	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
 	
 
-# Not a target:
-/Users/kyoulee/Documents/git/push_swap/obj/ft_pp.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+/Users/kyoulee/Documents/git/push_swap/obj/ft_pp.o: /Users/kyoulee/Documents/git/push_swap/src_push_swap/ft_pp.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `ft_pp'
+#  Last modified 2022-08-13 08:56:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 155):
+	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
+	
 
-# Not a target:
-/Users/kyoulee/Documents/git/push_swap/obj/ft_rrr.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+/Users/kyoulee/Documents/git/push_swap/obj/ft_rrr.o: /Users/kyoulee/Documents/git/push_swap/src_push_swap/ft_rrr.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `ft_rrr'
+#  Last modified 2022-08-13 08:56:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 155):
+	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
+	
 
 # Not a target:
 .SUFFIXES:
@@ -390,9 +398,12 @@ all: /Users/kyoulee/Documents/git/push_swap/obj push_swap
 
 # Not a target:
 /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_add.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-13 08:56:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 Makefile:
@@ -409,21 +420,22 @@ debug:
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 164):
 	$(CC) main.c $(CFLAGS) $(IFLAGS) $(LDFLAGS) $(LDLIBS) $(OBJS) -g3 -fsanitize=address
- 
 	
 
 test:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 #  commands to execute (from `Makefile', line 137):
 	@echo "$(OBJS) -o $(TARGET)"
 	
 
 /Users/kyoulee/Documents/git/push_swap/modules/Libft/libft.a:
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2022-08-15 10:24:38
+#  File has been updated.
+#  Successfully updated.
 #  commands to execute (from `Makefile', line 168):
 	echo "$(FG_MAGENTA)module $(FG_LYELLOW)Libft$(NO_COLOR) -> $(FG_LCYAN)$(LIBFT)$(NO_COLOR)$(BG_MAKE1)"
 	$(MAKE) -C $(LIBFT_DIR) bonus
@@ -432,7 +444,7 @@ test:
 
 /Users/kyoulee/Documents/git/push_swap/obj:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-13 08:57:23
+#  Last modified 2022-08-13 09:00:34
 #  File has been updated.
 #  Successfully updated.
 #  commands to execute (from `Makefile', line 149):
@@ -455,10 +467,49 @@ fclean: clean
 # Load=1/32=3%, Rehash=0, Collisions=0/2=0%
 
 # Not a target:
+/Users/kyoulee/Documents/git/push_swap/src_quick_sort/ft_pivot_split.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-13 09:00:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+/Users/kyoulee/Documents/git/push_swap/src_push_swap/ft_pp.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-12 15:24:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
 /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_connect.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-13 08:56:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+/Users/kyoulee/Documents/git/push_swap/src_push_swap/ft_rrr.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-11 23:50:36
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+/Users/kyoulee/Documents/git/push_swap/src_quick_sort/ft_quick_sort.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-13 08:53:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .DEFAULT:
@@ -466,11 +517,17 @@ fclean: clean
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-/Users/kyoulee/Documents/git/push_swap/obj/ft_ss.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+/Users/kyoulee/Documents/git/push_swap/obj/ft_ss.o: /Users/kyoulee/Documents/git/push_swap/src_push_swap/ft_ss.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `ft_ss'
+#  Last modified 2022-08-13 08:56:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 155):
+	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
+	
 
 re: fclean all
 #  Phony target (prerequisite of .PHONY).
@@ -489,11 +546,28 @@ clean: clean_libft
 
 push_swap: /Users/kyoulee/Documents/git/push_swap/obj/main.o /Users/kyoulee/Documents/git/push_swap/obj/ft_pp.o /Users/kyoulee/Documents/git/push_swap/obj/ft_rr.o /Users/kyoulee/Documents/git/push_swap/obj/ft_rrr.o /Users/kyoulee/Documents/git/push_swap/obj/ft_ss.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_add.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_connect.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_head_add.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_head_pop.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list.o /Users/kyoulee/Documents/git/push_swap/obj/ft_pivot_split.o /Users/kyoulee/Documents/git/push_swap/obj/ft_quick_sort.o /Users/kyoulee/Documents/git/push_swap/modules/Libft/libft.a
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Implicit/static pattern stem: `'
+#  Last modified 2022-08-13 09:00:34
 #  File has been updated.
 #  Needs to be updated (-q is set).
+# automatic
+# @ := push_swap
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := /Users/kyoulee/Documents/git/push_swap/obj/main.o /Users/kyoulee/Documents/git/push_swap/obj/ft_pp.o /Users/kyoulee/Documents/git/push_swap/obj/ft_rr.o /Users/kyoulee/Documents/git/push_swap/obj/ft_rrr.o /Users/kyoulee/Documents/git/push_swap/obj/ft_ss.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_add.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_connect.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_head_add.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_head_pop.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list.o /Users/kyoulee/Documents/git/push_swap/obj/ft_pivot_split.o /Users/kyoulee/Documents/git/push_swap/obj/ft_quick_sort.o /Users/kyoulee/Documents/git/push_swap/modules/Libft/libft.a
+# automatic
+# | := 
+# automatic
+# < := /Users/kyoulee/Documents/git/push_swap/obj/main.o
+# automatic
+# ^ := /Users/kyoulee/Documents/git/push_swap/obj/main.o /Users/kyoulee/Documents/git/push_swap/obj/ft_pp.o /Users/kyoulee/Documents/git/push_swap/obj/ft_rr.o /Users/kyoulee/Documents/git/push_swap/obj/ft_rrr.o /Users/kyoulee/Documents/git/push_swap/obj/ft_ss.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_add.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_connect.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_head_add.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_head_pop.o /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list.o /Users/kyoulee/Documents/git/push_swap/obj/ft_pivot_split.o /Users/kyoulee/Documents/git/push_swap/obj/ft_quick_sort.o /Users/kyoulee/Documents/git/push_swap/modules/Libft/libft.a
+# automatic
+# ? := /Users/kyoulee/Documents/git/push_swap/modules/Libft/libft.a
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/14=0%
+# Load=8/32=25%, Rehash=0, Collisions=32/167=19%
 #  commands to execute (from `Makefile', line 141):
 	$(CC) $(CFLAGS) $(IFLAGS) $(LDFLAGS) $(LDLIBS) $(OBJS) -o $(TARGET)
 	@echo "$(FG_LMAGENTA)$(CC) $(FG_BLUE) $(CFLAGS)"
@@ -506,17 +580,23 @@ push_swap: /Users/kyoulee/Documents/git/push_swap/obj/main.o /Users/kyoulee/Docu
 # Not a target:
 /Users/kyoulee/Documents/git/push_swap/src/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-13 08:56:25
+#  Last modified 2022-08-13 08:59:32
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-/Users/kyoulee/Documents/git/push_swap/obj/ft_rr.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+/Users/kyoulee/Documents/git/push_swap/obj/ft_rr.o: /Users/kyoulee/Documents/git/push_swap/src_push_swap/ft_rr.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `ft_rr'
+#  Last modified 2022-08-13 08:56:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 155):
+	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
+	
 
 clean_libft:
 #  Phony target (prerequisite of .PHONY).
@@ -529,32 +609,60 @@ clean_libft:
 	@echo "$(NO_COLOR)"
 	
 
-# Not a target:
-/Users/kyoulee/Documents/git/push_swap/obj/ft_pivot_split.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+/Users/kyoulee/Documents/git/push_swap/obj/ft_pivot_split.o: /Users/kyoulee/Documents/git/push_swap/src_quick_sort/ft_pivot_split.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `ft_pivot_split'
+#  Last modified 2022-08-13 09:00:34
+#  File has been updated.
+#  Successfully updated.
+ 
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 161):
+	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
+	
 
 # Not a target:
 /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_head_pop.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-13 08:56:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-/Users/kyoulee/Documents/git/push_swap/obj/ft_quick_sort.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+/Users/kyoulee/Documents/git/push_swap/src_push_swap/ft_ss.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-12 15:24:33
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+/Users/kyoulee/Documents/git/push_swap/obj/ft_quick_sort.o: /Users/kyoulee/Documents/git/push_swap/src_quick_sort/ft_quick_sort.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `ft_quick_sort'
+#  Last modified 2022-08-13 08:56:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 161):
+	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
+	
 
 # Not a target:
 /Users/kyoulee/Documents/git/push_swap/obj/ft_doubly_list_head_add.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-13 08:56:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=28/1024=3%, Rehash=0, Collisions=1/72=1%
+# Load=34/1024=3%, Rehash=0, Collisions=4/147=3%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -566,6 +674,6 @@ clean_libft:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sat Aug 13 08:57:28 2022
+# Finished Make data base on Mon Aug 15 10:50:38 2022
 
  
