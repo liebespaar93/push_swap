@@ -6,13 +6,15 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:31:02 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/13 09:00:01 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/22 21:48:02 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <ft_quick_sort.h>
 #include <ft_push_swap.h>
+#include <ft_doubly_list.h>
+#include <ft_printf_stack.h>
 
 t_d_list	*ft_pivot_split(t_d_list_header *a, t_d_list_header *b, \
 	t_d_list_header **pivot, int deep)
@@ -29,9 +31,11 @@ t_d_list	*ft_pivot_split(t_d_list_header *a, t_d_list_header *b, \
 			ft_pivot_split_b_right(a, b, pivot, &deep);
 		if (deep == 1)
 			break ;
+		ft_printf_ab(a, b, pivot);
 	}
 	while (b->head)
 		ft_pa(a, b);
+	ft_printf_ab(a, b, pivot);
 	return (a->head);
 }
 

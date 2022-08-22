@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:31:02 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/13 08:53:59 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/22 21:39:35 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_d_list	*ft_quick_sort(t_d_list *memory, int max_len)
 	pivot[0]->head = a->head;
 	quick_sort = ft_pivot_split(a, b, pivot, deep);
 	while (max_len--)
-		ft_d_list_free(pivot[max_len], free);
+		free(pivot[max_len]);
 	free(pivot);
 	free(a);
 	free(b);

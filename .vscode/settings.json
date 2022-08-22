@@ -4,6 +4,10 @@
 		"stdlib.h": "c",
 		"ft_doubly_list.h": "c",
 		"ft_quick_sort.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"ft_color.h": "c",
+		"ft_printf_percent.h": "c",
+		"ft_printf.h": "c",
+		"ft_printf_push_swap": "c"
 	}
 }

@@ -6,12 +6,14 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 06:06:22 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/12 15:24:33 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/22 21:55:47 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_push_swap.h>
 #include <libft.h>
+#include <ft_color.h>
+#include <ft_printf.h>
 
 int	ft_sa(t_d_list_header *a_ptr)
 {
@@ -24,6 +26,7 @@ int	ft_sa(t_d_list_header *a_ptr)
 	pop2 = ft_d_list_header_pop_head(a_ptr);
 	ft_d_list_header_add_head(a_ptr, pop1);
 	ft_d_list_header_add_head(a_ptr, pop2);
+	ft_printf(FG_LGREEN"sa\n"NO_COLOR);
 	return (1);
 }
 
@@ -38,10 +41,12 @@ int	ft_sb(t_d_list_header *b_ptr)
 	pop2 = ft_d_list_header_pop_head(b_ptr);
 	ft_d_list_header_add_head(b_ptr, pop1);
 	ft_d_list_header_add_head(b_ptr, pop2);
+	ft_printf(FG_LGREEN"sb\n"NO_COLOR);
 	return (1);
 }
 
 int	ft_ss(t_d_list_header *a_ptr, t_d_list_header *b_ptr)
 {
+	ft_printf(FG_LGREEN"ss\n"NO_COLOR);
 	return (ft_sa(a_ptr) + ft_sa(b_ptr));
 }

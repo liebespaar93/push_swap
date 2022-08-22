@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 04:29:58 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/13 08:59:32 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/22 21:39:57 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <ft_push_swap.h>
 #include <libft.h>
 #include <ft_quick_sort.h>
+#include <ft_printf.h>
+#include <ft_printf_stack.h>
 
 int	ft_input_error(int ar, char **av, int (*f)(int))
 {
@@ -53,6 +55,8 @@ int	main(int ar, char **av)
 	if (ft_input_error(ar, av, ft_isdigit))
 		return (0);
 	memory = ft_make_memory(ar, av);
-	quick_sort = ft_quick_sort(memory, ar);
+	quick_sort = ft_quick_sort(memory, ar + 1);
+	ft_printf_stack(quick_sort, NULL, "memory: ");
+	ft_d_list_free(&quick_sort, free);
 	return (1);
 }
