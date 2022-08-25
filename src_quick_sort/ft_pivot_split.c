@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:31:02 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/22 21:48:02 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/25 09:28:48 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@ t_d_list	*ft_pivot_split(t_d_list_header *a, t_d_list_header *b, \
 			ft_pivot_split_b_right(a, b, pivot, &deep);
 		if (deep == 1)
 			break ;
-		ft_printf_ab(a, b, pivot);
 	}
 	while (b->head)
 		ft_pa(a, b);
-	ft_printf_ab(a, b, pivot);
 	return (a->head);
 }
 

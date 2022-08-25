@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 04:29:58 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/22 21:39:57 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/25 09:29:08 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	ft_input_error(int ar, char **av, int (*f)(int))
 {
 	char	*str;
 
-	if (ar == 1)
-		ft_warring_m("input nothing");
+	if (ar == 1 && ft_error_m("input nothing"))
+		exit(0);
 	while (ar-- > 1 && ft_ptrcpy((void **)&str, av[ar]))
 		while (*str)
 			if (!f(*str++) && ft_error_m("some input is not integer"))
-				return (1);
+				exit(0);
 	return (0);
 }
 
@@ -41,6 +41,8 @@ t_d_list	*ft_make_memory(int ar, char **av)
 		temp = (int *)malloc(sizeof(int));
 		if (!temp)
 			(ft_d_list_free(&new, free));
+		if (*av[ar] == NULL && ft_error_m("some input is NULL"))
+			exit(0);
 		*temp = ft_atoi(av[ar]);
 		new = ft_d_list_add_prev(new, ft_d_list_new(temp));
 	}
@@ -56,7 +58,6 @@ int	main(int ar, char **av)
 		return (0);
 	memory = ft_make_memory(ar, av);
 	quick_sort = ft_quick_sort(memory, ar + 1);
-	ft_printf_stack(quick_sort, NULL, "memory: ");
 	ft_d_list_free(&quick_sort, free);
 	return (1);
 }
