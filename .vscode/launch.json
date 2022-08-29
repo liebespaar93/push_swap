@@ -10,7 +10,7 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/a.out",
 			//"args": ["1", "12", "12", "31", "212", "31", "11", "1", "2", "141", "4112", "1231", "1"],
-			"args": ["1 2 12 3 113 4"],
+			"args": ["3 2 1"],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],

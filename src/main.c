@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 04:29:58 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/27 21:21:56 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/29 16:06:05 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ int	ft_input_error(int ar, char **av)
 	return (0);
 }
 
+int ft_in_list_p(t_d_list *list, int num)
+{
+	while (list)
+	{
+		if (*list->data == num)
+			return (1);
+		list = list->prev;
+	}
+	return (0);
+}
 t_d_list	*ft_make_memory(int ar, char **av)
 {
 	t_d_list	*new;
@@ -53,8 +63,10 @@ t_d_list	*ft_make_memory(int ar, char **av)
 		while (i[1]--)
 		{
 			if (!ft_zeromalloc((void **)&temp, sizeof(int)))
-				exit(0);
+				return (NULL);
 			*temp = ft_atoi_move(&string);
+			if (ft_in_list_p(new, *temp) && ft_error_m("same number in input"))
+				return (NULL);
 			new = ft_d_list_add_next(new, ft_d_list_new(temp));
 		}
 	}
@@ -71,6 +83,8 @@ int	main(int ar, char **av)
 	if (ft_input_error(ar, av))
 		return (0);
 	memory = ft_make_memory(ar, av);
+	if (!memory)
+		return (0);
 	ft_printf_stack(memory, 0, "memory");
 	quick_sort = ft_quick_sort(memory);
 	ft_printf_stack(quick_sort, 0, "quick_sort");
