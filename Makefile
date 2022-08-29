@@ -6,7 +6,7 @@
 #    By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/31 10:01:30 by kyoulee           #+#    #+#              #
-#    Updated: 2022/08/22 21:51:05 by kyoulee          ###   ########.fr        #
+#    Updated: 2022/08/27 19:58:58 by kyoulee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,6 +120,7 @@ SRC_DOUBLY_LIST_C = $(addprefix $(SRC_DOUBLY_LIST_DIR)/, $(SRC_DOUBLY_LIST_C_SRC
 
 SRC_QUICK_SORT_C_SRC =	\
 						ft_pivot_split.c	\
+						ft_pivot.c			\
 						ft_quick_sort.c
 
 SRC_QUICK_SORT_C = $(addprefix $(SRC_QUICK_SORT_DIR)/, $(SRC_QUICK_SORT_C_SRC))

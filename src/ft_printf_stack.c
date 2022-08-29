@@ -6,17 +6,19 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 21:38:31 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/22 21:52:10 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/28 13:30:52 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_doubly_list.h>
 #include <ft_color.h>
 #include <ft_printf.h>
+#include <ft_quick_sort.h>
 
-int	ft_printf_stack(t_d_list *d_list, t_d_list_header **pivot, char *str)
+int	ft_printf_stack(t_d_list *d_list, t_pivot *pivot, char *str)
 {
 	t_d_list	*stack;
+	t_pivot		*temp;
 	size_t		i;
 
 	if (ft_printf(FG_CYAN"%s \t\n\n", str) && !d_list)
@@ -25,9 +27,10 @@ int	ft_printf_stack(t_d_list *d_list, t_d_list_header **pivot, char *str)
 	while (stack && ft_printf(BG_DGREY""))
 	{
 		i = 0;
-		while (pivot && pivot[i] && pivot[i]->head)
+		temp = pivot;
+		while (temp)
 		{
-			if (pivot[i++]->head->data == stack->data)
+			if (temp->head == stack && i++)
 			{
 				if (i == 1)
 					ft_printf(BG_LYELLOW"");
@@ -36,6 +39,7 @@ int	ft_printf_stack(t_d_list *d_list, t_d_list_header **pivot, char *str)
 				else
 					ft_printf(BG_LBLUE"");
 			}
+			temp = temp->prev;
 		}
 		ft_printf("  %d  "NO_COLOR"\t", *(int *)stack->data);
 		stack = stack->next;
@@ -44,7 +48,7 @@ int	ft_printf_stack(t_d_list *d_list, t_d_list_header **pivot, char *str)
 }
 
 void	ft_printf_ab(t_d_list_header *a, t_d_list_header *b, \
-	t_d_list_header **pivot)
+	t_pivot *pivot)
 {
 	ft_printf("\n ===================================\n");
 	if (a)

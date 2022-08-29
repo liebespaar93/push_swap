@@ -8,6 +8,8 @@
 		"ft_color.h": "c",
 		"ft_printf_percent.h": "c",
 		"ft_printf.h": "c",
-		"ft_printf_push_swap": "c"
+		"ft_printf_push_swap": "c",
+		"libft.h": "c",
+		"ft_printf_stack.h": "c"
 	}
 }
