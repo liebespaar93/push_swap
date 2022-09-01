@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 04:29:58 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/29 16:06:05 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/09/01 16:27:35 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ int	ft_input_error(int ar, char **av)
 {
 	char	*str;
 
-	if (ar == 1 && ft_error_m("input nothing"))
-		exit(0);
+	if (ar == 1 && ft_warring_m("input nothing"))
+		return (0);
 	while (ar-- > 1 && ft_ptrcpy((void **)&str, av[ar]))
 	{
 		while (*str)
 		{
-			if (*str == 0x20 || ft_isdigit(*str))
+			if (*str == 0x20 || ft_isdigit(*str) || *str == '+' || *str == '-')
 				str++;
-			else
+			else if (ft_error_m("input digit only"))
 				exit(0);
 		}
 	}
@@ -45,6 +45,32 @@ int ft_in_list_p(t_d_list *list, int num)
 	}
 	return (0);
 }
+
+int	ft_atoi_move(char **str_ptr)
+{
+	int	num;
+	int	sign;
+
+	num = 0;
+	sign = 1;
+	while ((0x09 <= **str_ptr && **str_ptr <= 0x0D) || **str_ptr == 0x20)
+		(*str_ptr)++;
+	if ((**str_ptr == '-' || **str_ptr == '+'))
+	{
+		if (**str_ptr == '-')
+			sign = -1;
+		(*str_ptr)++;
+	}
+	while (0x30 <= **str_ptr && **str_ptr <= 0x39)
+	{
+		if (num > num * 10 && ft_error_m("some input is not intiger"))
+			exit(0);
+		num = (num * 10) + (**str_ptr - 0x30);
+		(*str_ptr)++;
+	}
+	return (num * sign);
+}
+
 t_d_list	*ft_make_memory(int ar, char **av)
 {
 	t_d_list	*new;
@@ -53,6 +79,8 @@ t_d_list	*ft_make_memory(int ar, char **av)
 	int			i[2];
 
 	new = NULL;
+	if (ar <= 1)
+		return (NULL);
 	i[0] = 0;
 	while (++i[0] < ar)
 	{
@@ -66,7 +94,7 @@ t_d_list	*ft_make_memory(int ar, char **av)
 				return (NULL);
 			*temp = ft_atoi_move(&string);
 			if (ft_in_list_p(new, *temp) && ft_error_m("same number in input"))
-				return (NULL);
+				exit(0);
 			new = ft_d_list_add_next(new, ft_d_list_new(temp));
 		}
 	}
@@ -80,14 +108,17 @@ int	main(int ar, char **av)
 	t_d_list	*memory;
 	t_d_list	*quick_sort;
 
+	quick_sort = NULL;
 	if (ft_input_error(ar, av))
 		return (0);
 	memory = ft_make_memory(ar, av);
-	if (!memory)
-		return (0);
 	ft_printf_stack(memory, 0, "memory");
-	quick_sort = ft_quick_sort(memory);
+	quick_sort = ft_push_swap(memory);
 	ft_printf_stack(quick_sort, 0, "quick_sort");
 	ft_d_list_free(&quick_sort, free);
+	system("leaks a.out");
 	return (1);
 }
+
+
+
