@@ -4,6 +4,7 @@
 		"ft_printf_stack.h": "c",
 		"ft_doubly_list.h": "c",
 		"ft_printf.h": "c",
-		"ft_quick_sort.h": "c"
+		"ft_quick_sort.h": "c",
+		"libft.h": "c"
 	}
 }

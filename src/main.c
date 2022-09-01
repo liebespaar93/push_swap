@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 04:29:58 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/09/01 19:26:27 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/09/01 20:03:01 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,7 @@ int	main(int ar, char **av)
 	if (ft_input_error(ar, av))
 		return (0);
 	memory = ft_make_memory(ar, av);
-	ft_printf_stack(memory, 0, "memory");
 	quick_sort = ft_push_swap(memory);
-	ft_printf_stack(quick_sort, 0, "quick_sort");
 	ft_d_list_free(&quick_sort, free);
 	return (1);
 }
