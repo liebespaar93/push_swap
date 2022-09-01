@@ -6,7 +6,7 @@
 #    By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/31 10:01:30 by kyoulee           #+#    #+#              #
-#    Updated: 2022/08/27 19:58:58 by kyoulee          ###   ########.fr        #
+#    Updated: 2022/09/01 17:38:00 by kyoulee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,7 @@ SRC_C_SRC =	main.c	\
 
 SRC_C = $(addprefix $(SRC_DIR)/, $(SRC_C_SRC))
 
-SRC_PUSH_SWAP_C_SRC =	\
+SRC_PUSH_SWAP_C_SRC =	ft_push_swap.c	\
 						ft_pp.c		\
 						ft_rr.c		\
 						ft_rrr.c	\

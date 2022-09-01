@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 04:29:58 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/09/01 16:27:35 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/09/01 19:26:27 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_input_error(int ar, char **av)
 	return (0);
 }
 
-int ft_in_list_p(t_d_list *list, int num)
+int	ft_in_list_p(t_d_list *list, int num)
 {
 	while (list)
 	{
@@ -74,25 +74,21 @@ int	ft_atoi_move(char **str_ptr)
 t_d_list	*ft_make_memory(int ar, char **av)
 {
 	t_d_list	*new;
-	char		*string;
 	int			*temp;
 	int			i[2];
 
 	new = NULL;
-	if (ar <= 1)
-		return (NULL);
 	i[0] = 0;
 	while (++i[0] < ar)
 	{
 		if (*av[i[0]] == 0 && ft_error_m("some input is NULL"))
 			exit(0);
-		string = av[i[0]];
 		i[1] = ft_atoi_len(av[i[0]]);
 		while (i[1]--)
 		{
 			if (!ft_zeromalloc((void **)&temp, sizeof(int)))
 				return (NULL);
-			*temp = ft_atoi_move(&string);
+			*temp = ft_atoi_move(&av[i[0]]);
 			if (ft_in_list_p(new, *temp) && ft_error_m("same number in input"))
 				exit(0);
 			new = ft_d_list_add_next(new, ft_d_list_new(temp));
@@ -116,9 +112,5 @@ int	main(int ar, char **av)
 	quick_sort = ft_push_swap(memory);
 	ft_printf_stack(quick_sort, 0, "quick_sort");
 	ft_d_list_free(&quick_sort, free);
-	system("leaks a.out");
 	return (1);
 }
-
-
-

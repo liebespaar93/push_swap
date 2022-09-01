@@ -6,14 +6,13 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:31:02 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/27 20:00:35 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/09/01 19:29:53 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <ft_quick_sort.h>
 #include <ft_doubly_list.h>
-
 
 t_pivot	*ft_pivot_new(t_d_list *head, t_d_list *tail)
 {
