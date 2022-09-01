@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 03:46:54 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/12 15:27:52 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/22 21:49:30 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ t_d_list	*ft_d_list_free(t_d_list **lst, void (*del)(void *))
 		lst_life = ft_d_list_del(lst_life, del);
 	*lst = NULL;
 	return (lst_life);
+}
+
+t_d_list_header	*ft_d_list_header_free(t_d_list_header **lst_header, \
+	void (*del)(void *))
+{
+	ft_d_list_free(&(*lst_header)->head, del);
+	*lst_header = NULL;
+	return (NULL);
 }
 
 t_d_list_header	*ft_d_list_header_init(t_d_list *lst)

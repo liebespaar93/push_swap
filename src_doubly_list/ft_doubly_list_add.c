@@ -6,12 +6,11 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 03:54:56 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/11 23:46:25 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/27 21:00:42 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_doubly_list.h>
-#include <libft.h>
 
 t_d_list	*ft_d_list_add_next(t_d_list *standard, t_d_list *next)
 {

@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 22:30:25 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/12 15:27:48 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/08/25 09:12:20 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_d_list	*ft_d_list_header_pop_head(t_d_list_header *standard)
 	t_d_list	*pop;
 
 	if (!standard->head && ft_error_m("No head!"))
-		return (NULL);
+		exit(0);
 	pop = standard->head;
 	if (standard->head == standard->tail)
 	{
@@ -40,9 +40,9 @@ t_d_list	*ft_d_list_header_pop_tail(t_d_list_header *standard)
 	t_d_list	*pop;
 
 	if (!standard->tail && ft_error_m("No tail!"))
-		return (NULL);
+		exit(0);
 	pop = standard->tail;
-	if (standard->head == standard->tail && ft_warring_m("Empty"))
+	if (standard->head == standard->tail)
 	{
 		standard->head = NULL;
 		standard->tail = NULL;

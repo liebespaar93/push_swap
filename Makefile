@@ -6,14 +6,8 @@
 #    By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/31 10:01:30 by kyoulee           #+#    #+#              #
-#    Updated: 2022/08/13 08:57:19 by kyoulee          ###   ########.fr        #
+#    Updated: 2022/08/27 19:58:58 by kyoulee          ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
-
-# **************************************************************************** #
-# option
-# m1 : 맥에서 사용가능하게 mms 라이브러리를 불러옴
-# linux : 아직 만들지 않음 컴파일 단걔 LDLIBS 추가 변경 요구함
 # **************************************************************************** #
 
 TARGET = push_swap
@@ -24,11 +18,16 @@ CFLAGS = -Wall -Werror -Wextra
 DFLAGS = $(NULL)
 IFLAGS =						\
 	-I $(INCLUDE_DIR)			\
-	-I $(INCLUDE_LIBFT_DIR)
+	-I $(INCLUDE_LIBFT_DIR)		\
+	-I $(INCLUDE_FT_PRINTF_DIR)
+
 LDFLAGS =						\
-	-L $(LIBFT_DIR)
+	-L $(LIBFT_DIR)				\
+	-L $(FT_PRINTF_DIR)
+	
 LDLIBS =						\
-	-lft
+	 -lft -lftprintf
+	
 
 #####***** COLOR *****#####
 BG_RED     = \033[41m
@@ -92,8 +91,13 @@ LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_DIR = $(ROOTDIR)/modules/Libft
 INCLUDE_LIBFT_DIR = $(LIBFT_DIR)/include
 
+FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
+FT_PRINTF_DIR = $(ROOTDIR)/modules/ft_printf
+INCLUDE_FT_PRINTF_DIR = $(FT_PRINTF_DIR)/include
+
 #####***** SRC *****#####
-SRC_C_SRC =	main.c
+SRC_C_SRC =	main.c	\
+			ft_printf_stack.c
 
 SRC_C = $(addprefix $(SRC_DIR)/, $(SRC_C_SRC))
 
@@ -116,6 +120,7 @@ SRC_DOUBLY_LIST_C = $(addprefix $(SRC_DOUBLY_LIST_DIR)/, $(SRC_DOUBLY_LIST_C_SRC
 
 SRC_QUICK_SORT_C_SRC =	\
 						ft_pivot_split.c	\
+						ft_pivot.c			\
 						ft_quick_sort.c
 
 SRC_QUICK_SORT_C = $(addprefix $(SRC_QUICK_SORT_DIR)/, $(SRC_QUICK_SORT_C_SRC))
@@ -137,7 +142,7 @@ test :
 	@echo "$(OBJS) -o $(TARGET)"
 
 
-$(TARGET) : $(OBJS) $(LIBFT) $(MINILIBX_SELECT)
+$(TARGET) : $(OBJS) $(LIBFT) $(FT_PRINTF)
 	$(CC) $(CFLAGS) $(IFLAGS) $(LDFLAGS) $(LDLIBS) $(OBJS) -o $(TARGET)
 	@echo "$(FG_LMAGENTA)$(CC) $(FG_BLUE) $(CFLAGS)"
 	@(for i in $(IFLAGS) $(LDFLAGS); do echo $$i; done)
@@ -169,6 +174,10 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR) bonus
 	@echo "$(NO_COLOR)"
 
+$(FT_PRINTF):
+	echo "$(FG_MAGENTA)module $(FG_LYELLOW)ft_printf$(NO_COLOR) -> $(FG_LCYAN)$(FT_PRINTF)$(NO_COLOR)$(BG_MAKE1)"
+	$(MAKE) -C $(FT_PRINTF_DIR) bonus
+	@echo "$(NO_COLOR)"
 #####***** clean *****#####
 
 ## MODULES ##
@@ -177,7 +186,12 @@ clean_libft :
 	$(MAKE) -C $(LIBFT_DIR) fclean 
 	@echo "$(NO_COLOR)"
 
-clean : clean_libft
+clean_ft_printf :
+	@echo "clean $(FG_MAGENTA)module $(FG_LYELLOW)$(notdir $(FT_PRINTF))$(NO_COLOR)$(BG_MAKE1)"
+	$(MAKE) -C $(FT_PRINTF_DIR) fclean 
+	@echo "$(NO_COLOR)"
+
+clean : clean_libft clean_ft_printf
 	rm -f $(OBJS_CLEAN)
 
 fclean : OBJS_CLEAN+=$(TARGET)
@@ -185,4 +199,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY: all re  clean fclean clean_libft
+.PHONY: all re  clean fclean clean_libft clean_ft_printf

@@ -3,8 +3,7 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/include/**",
-                "${workspaceFolder}/src_doubly_list"
+                "${workspaceFolder}/**"
             ],
             "defines": [],
             "macFrameworkPath": [
