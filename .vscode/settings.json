@@ -5,6 +5,7 @@
 		"ft_doubly_list.h": "c",
 		"ft_printf.h": "c",
 		"ft_quick_sort.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"ft_get_next_line.h": "c"
 	}
 }

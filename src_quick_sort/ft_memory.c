@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 18:33:58 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/09/01 19:30:02 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/09/01 22:04:35 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_d_list	*ft_memory_two_a(t_d_list_header *a, t_result *result)
 {
 	if (result->result[result->p] != *a->head->data)
 		ft_sa(a);
+	else
+		ft_printf("\n");
 	return (a->head);
 }
 
@@ -35,6 +37,8 @@ t_d_list	*ft_memory_three_a(t_d_list_header *a, t_result *result)
 	}
 	if (result->result[result->p] != *a->head->data)
 		ft_sa(a);
+	else
+		ft_printf("\n");
 	return (a->head);
 }
 
@@ -42,6 +46,8 @@ t_d_list	*ft_memory_two_b(t_d_list_header *b, t_result *result)
 {
 	if (result->result[result->p] != *b->head->data)
 		ft_sb(b);
+	else
+		ft_printf("\n");
 	return (b->head);
 }
 
@@ -56,5 +62,7 @@ t_d_list	*ft_memory_three_b(t_d_list_header *b, t_result *result)
 	}
 	if (result->result[result->p] != *b->head->data)
 		ft_sb(b);
+	else
+		ft_printf("\n");
 	return (b->head);
 }

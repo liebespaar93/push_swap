@@ -6,11 +6,12 @@
 #    By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/31 10:01:30 by kyoulee           #+#    #+#              #
-#    Updated: 2022/09/01 19:43:26 by kyoulee          ###   ########.fr        #
+#    Updated: 2022/09/01 22:22:51 by kyoulee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TARGET = push_swap
+CHECK = checker
 
 CC = cc
 CXXFLAGS = $(NULL)
@@ -83,6 +84,8 @@ SRC_PUSH_SWAP_DIR = $(ROOTDIR)/src_push_swap
 SRC_DOUBLY_LIST_DIR = $(ROOTDIR)/src_doubly_list
 SRC_QUICK_SORT_DIR = $(ROOTDIR)/src_quick_sort
 
+SRC_CHECK_DIR = $(ROOTDIR)/src_check
+
 OBJ_DIR = $(ROOTDIR)/obj
 INCLUDE_DIR = $(ROOTDIR)/include
 
@@ -96,8 +99,7 @@ FT_PRINTF_DIR = $(ROOTDIR)/modules/ft_printf
 INCLUDE_FT_PRINTF_DIR = $(FT_PRINTF_DIR)/include
 
 #####***** SRC *****#####
-SRC_C_SRC =	main.c	\
-			ft_printf_stack.c
+SRC_C_SRC =	ft_printf_stack.c
 
 SRC_C = $(addprefix $(SRC_DIR)/, $(SRC_C_SRC))
 
@@ -130,7 +132,19 @@ OBJS =	$(SRC_C:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)	\
 		$(SRC_DOUBLY_LIST_C:$(SRC_DOUBLY_LIST_DIR)/%.c=$(OBJ_DIR)/%.o)	\
 		$(SRC_QUICK_SORT_C:$(SRC_QUICK_SORT_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-OBJS_CLEAN = $(OBJS)
+
+## check ##
+
+SRC_CHECK_C_SRC =	check.c \
+					ft_check.c
+
+SRC_CHECK_C = $(addprefix $(SRC_CHECK_DIR)/, $(SRC_CHECK_C_SRC))
+
+OBJS_CHECK = $(SRC_CHECK_C:$(SRC_CHECK_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+
+
+OBJS_CLEAN = $(OBJS) $(OBJS_CHECK)
 
 #####***** working *****#####
 
@@ -142,13 +156,16 @@ test :
 	@echo "$(OBJS) -o $(TARGET)"
 
 
-$(TARGET) : $(OBJS) $(LIBFT) $(FT_PRINTF)
-	$(CC) $(CFLAGS) $(IFLAGS) $(LDFLAGS) $(LDLIBS) $(OBJS) -o $(TARGET)
+$(TARGET) : $(OBJS) $(LIBFT) $(FT_PRINTF) $(CHECK)
+	$(CC) main.c $(CFLAGS) $(IFLAGS) $(LDFLAGS) $(LDLIBS) $(OBJS) -o $(TARGET)
 	@echo "$(FG_LMAGENTA)$(CC) $(FG_BLUE) $(CFLAGS)"
 	@(for i in $(IFLAGS) $(LDFLAGS); do echo $$i; done)
 	@echo "$(LDLIBS) $(FG_LCYAN)"
 	@(for i in $(OBJS); do echo $$i; done)
 	@echo "$(FG_BLUE)-o $(FG_LYELLOW)$(TARGET)"
+
+ $(CHECK) : $(OBJS) $(OBJS_CHECK) $(LIBFT) $(FT_PRINTF)
+	$(CC)  $(CFLAGS) $(IFLAGS) $(LDFLAGS) $(LDLIBS) $(OBJS) $(OBJS_CHECK) -o $(CHECK)
 
 $(OBJ_DIR) : 
 	mkdir $@
@@ -163,6 +180,9 @@ $(OBJ_DIR)/%.o : $(SRC_DOUBLY_LIST_DIR)/%.c
 	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
 
 $(OBJ_DIR)/%.o : $(SRC_QUICK_SORT_DIR)/%.c
+	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/%.o : $(SRC_CHECK_DIR)/%.c
 	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
 
 debug : 

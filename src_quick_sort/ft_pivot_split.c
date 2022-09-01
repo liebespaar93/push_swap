@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:31:02 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/09/01 19:37:59 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/09/01 22:33:13 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	ft_matching_result(t_d_list *a_hold, t_result *result, t_pivot *pivot)
 		index++;
 		result->p = index;
 	}
+	if (!(result->index - index))
+		ft_printf("\n");
 	return (result->index - index);
 }
 
@@ -46,6 +48,8 @@ t_d_list	*ft_pivot_split(t_d_list_header *a, t_d_list_header *b, \
 		ft_ra(a);
 	while (result->p < result->index)
 	{
+		if (result->last < result->p)
+			result->last = result->p;
 		if (a->head && *a->head->data != result->result[0])
 			ft_pivot_split_a_left(a, b, &pivot, result);
 		else if (b->head && b->head != pivot->b_hold)
@@ -91,7 +95,6 @@ int	ft_pivot_split_b_left(t_d_list_header *a, t_d_list_header *b, \
 {
 	int	middle;
 
-	result->last = result->p + (result->last - result->p + 1) / 2;
 	middle = result->result[result->last];
 	ft_pivot_add(pivot, ft_pivot_new(NULL, NULL));
 	while (b->head && b->head != (*pivot)->b_hold)
