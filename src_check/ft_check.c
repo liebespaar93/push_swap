@@ -58,11 +58,11 @@ void	ft_check_stack(t_d_list_header *a, t_d_list_header *b, \
 		str = ft_get_next_line(0);
 		if (str)
 			ft_stack_change(a, b, str);
-		else if (ft_printf(FG_LRED"KO"NO_COLOR))
+		else if (ft_printf(FG_LRED"KO\n"NO_COLOR))
 			break ;
 		free(str);
 		ft_matching_result(a->head, result, pivot);
-		if (result->p == result->index && ft_printf(FG_GREEN"OK"NO_COLOR))
+		if (result->p == result->index && ft_printf(FG_GREEN"OK\n"NO_COLOR))
 			break ;
 	}
 }

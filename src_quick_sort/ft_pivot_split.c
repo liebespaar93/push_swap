@@ -31,8 +31,6 @@ int	ft_matching_result(t_d_list *a_hold, t_result *result, t_pivot *pivot)
 		index++;
 		result->p = index;
 	}
-	if (!(result->index - index))
-		ft_printf("\n");
 	return (result->index - index);
 }
 

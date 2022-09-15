@@ -16,12 +16,13 @@
 #include <ft_quick_sort.h>
 #include <ft_printf_stack.h>
 #include <ft_check.h>
+#include <ft_printf.h>
 
 int	ft_input_error(int ar, char **av)
 {
 	char	*str;
 
-	if (ar == 1 && ft_warring_m("input nothing"))
+	if (ar == 1)
 		exit(0);
 	while (ar-- > 1 && ft_ptrcpy((void **)&str, av[ar]))
 	{
@@ -29,7 +30,7 @@ int	ft_input_error(int ar, char **av)
 		{
 			if (*str == 0x20 || ft_isdigit(*str) || *str == '+' || *str == '-')
 				str++;
-			else if (ft_error_m("input digit only"))
+			else if (ft_printf("Error"))
 				exit(0);
 		}
 	}
@@ -64,7 +65,7 @@ int	ft_atoi_move(char **str_ptr)
 	}
 	while (0x30 <= **str_ptr && **str_ptr <= 0x39)
 	{
-		if (num > num * 10 && ft_error_m("some input is not intiger"))
+		if (num > num * 10 && ft_printf("Error"))
 			exit(0);
 		num = (num * 10) + (**str_ptr - 0x30);
 		(*str_ptr)++;
@@ -82,7 +83,7 @@ t_d_list	*ft_make_memory(int ar, char **av)
 	i[0] = 0;
 	while (++i[0] < ar)
 	{
-		if (*av[i[0]] == 0 && ft_error_m("some input is NULL"))
+		if (*av[i[0]] == 0 && ft_printf("Error"))
 			exit(0);
 		i[1] = ft_atoi_len(av[i[0]]);
 		while (i[1]--)
@@ -90,7 +91,7 @@ t_d_list	*ft_make_memory(int ar, char **av)
 			if (!ft_zeromalloc((void **)&temp, sizeof(int)))
 				return (NULL);
 			*temp = ft_atoi_move(&av[i[0]]);
-			if (ft_in_list_p(new, *temp) && ft_error_m("same number in input"))
+			if (ft_in_list_p(new, *temp) && ft_printf("Error"))
 				exit(0);
 			new = ft_d_list_add_next(new, ft_d_list_new(temp));
 		}
