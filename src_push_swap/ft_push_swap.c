@@ -14,6 +14,21 @@
 #include <ft_doubly_list.h>
 #include <ft_quick_sort.h>
 #include <ft_pivot.h>
+#include <stdio.h>
+
+void ft_print_stack(t_d_list_header *header, char *str)
+{
+	t_d_list *temp;
+
+	temp = header->head;
+	printf("%s : ", str);
+	while (temp)
+	{
+		printf("%d\t", *temp->data);
+		temp = temp->next;
+	}
+	printf("\n");
+}
 
 int *ft_result(t_d_list *memory)
 {
@@ -67,6 +82,8 @@ t_d_list	*ft_push_swap(t_d_list *memory)
 		memory = ft_sort_three(a, result);
 	else
 		memory = ft_pivot_sort(a, b, pivot);
+	ft_print_stack(a, "a");
+	ft_print_stack(b, "b");
 	free(result);
 	free(a);
 	free(b);

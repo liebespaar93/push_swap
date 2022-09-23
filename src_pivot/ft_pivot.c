@@ -9,7 +9,10 @@ int *ft_arrow_init(int *arrow, int deep)
 	int re_i;
 
 	i = 0;
-	arrow[i++] = 1;
+	if (deep % 2)
+		arrow[i++] = 1;
+	else
+		arrow[i++] = 0;
 	while (deep--)
 	{
 		re_i = 0;

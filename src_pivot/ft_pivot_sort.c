@@ -4,8 +4,6 @@
 #include <ft_doubly_list.h>
 #include <ft_stack.h>
 
-#include <stdio.h>
-#include <ft_color.h>
 
 int ft_min_hold(t_pdata *hold[3])
 {
