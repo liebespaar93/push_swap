@@ -1,0 +1,90 @@
+
+#include <libft.h>
+#include <ft_pivot.h>
+#include <ft_doubly_list.h>
+
+int *ft_arrow_init(int *arrow, int deep)
+{
+	int i;
+	int re_i;
+
+	i = 0;
+	arrow[i++] = 1;
+	while (deep--)
+	{
+		re_i = 0;
+		while (re_i < i)
+		{
+			arrow[i + re_i] = !arrow[i - 1 - re_i];
+			arrow[i + i + re_i] = !arrow[i - 1 - re_i];
+			re_i++;
+		}
+		i *= 3;	
+	}
+	return (arrow);
+}
+
+int *ft_arrow(int	len)
+{
+	int		*arrow;
+	int		i;
+	int		deep;
+
+	i = 1;
+	deep = 0;
+	while (i * 3 <= len && ++deep)
+		i *= 3;
+	if (!ft_zeromalloc((void **)&arrow, sizeof(int) * i))
+		return (NULL);
+	ft_arrow_init(arrow, deep);
+	return (arrow);
+}
+
+int *ft_len_arr(t_pivot *pivot)
+{
+	int *len_arr;
+	int	i;
+
+	if (!ft_zeromalloc((void **)&len_arr, sizeof(int) * pivot->len))
+		return (NULL);
+	i = 0;
+	if (pivot->index / pivot->len >= 2.0)
+	{
+		while (i < pivot->len)
+			len_arr[i++] = 2; 
+	}
+	else if (pivot->index / pivot->len >= 1.0)
+	{
+		while (i < pivot->len)
+			len_arr[i++] = 1;
+	}
+	else
+	{
+		while (i < pivot->len)
+			len_arr[i++] = 0;
+	}
+	i = 0;
+	while (i < pivot->index % pivot->len)
+		len_arr[i++] += 1;
+	return (len_arr);
+}
+
+t_pivot *ft_pivot_init(t_d_list *memory)
+{
+	t_d_list	*temp;
+	t_pivot		*pivot;
+
+	temp = memory;
+	if (!ft_zeromalloc((void **)&pivot, sizeof(t_pivot)))
+		return (NULL);
+	while (temp && ++pivot->index)
+		temp = temp->next;
+	pivot->len = 1;
+	while (pivot->len * 3 <= pivot->index && ++pivot->deep)
+		pivot->len *= 3;
+	pivot->arrow = ft_arrow(pivot->index);
+	pivot->len_arr = ft_len_arr(pivot);
+	if (!ft_zeromalloc((void **)&pivot->data, sizeof(t_pdata) * pivot->len))
+		return (NULL);
+	return (pivot);
+}

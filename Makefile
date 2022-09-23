@@ -99,7 +99,8 @@ FT_PRINTF_DIR = $(ROOTDIR)/modules/ft_printf
 INCLUDE_FT_PRINTF_DIR = $(FT_PRINTF_DIR)/include
 
 #####***** SRC *****#####
-SRC_C_SRC =	ft_printf_stack.c
+SRC_C_SRC =	ft_printf_stack.c	\
+			ft_make_memory.c
 
 SRC_C = $(addprefix $(SRC_DIR)/, $(SRC_C_SRC))
 
