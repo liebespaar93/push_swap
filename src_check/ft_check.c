@@ -6,18 +6,14 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 20:18:29 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/09/01 22:37:59 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/09/24 17:56:32 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_check.h>
-#include <ft_push_swap.h>
-#include <ft_quick_sort.h>
-#include <libft.h>
 #include <ft_doubly_list.h>
-#include <ft_printf.h>
-#include <ft_get_next_line.h>
-#include <ft_color.h>
+#include <libft.h>
+#include <ft_push_swap.h>
+#include <ft_memory.h>
 
 void	ft_stack_change(t_d_list_header *a, t_d_list_header *b, \
 	char *str)
@@ -71,7 +67,7 @@ t_d_list	*ft_check(t_d_list *memory)
 	t_d_list_header	*a;
 	t_d_list_header	*b;
 	t_pivot			*pivot;
-	t_result		*result;
+	int				*result;
 
 	if (!memory)
 		return (NULL);

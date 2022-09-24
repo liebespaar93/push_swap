@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:41:35 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/09/24 15:43:58 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/09/24 17:09:02 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_pivot
 	int		*arrow;
 	int		*len_arr;
 	t_pdata	*data;
+	int		data_len;
 	int		len;
 	int		deep;
 }	t_pivot;

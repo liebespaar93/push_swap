@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 14:32:54 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/09/23 16:26:49 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/09/24 17:52:14 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,30 @@ int	ft_matching_result(t_d_list *list_pir, int *result)
 	return (index);
 }
 
+t_pivot	*ft_pivot_free(t_pivot **pivot)
+{
+	if ((*pivot)->arrow)
+		free((*pivot)->arrow);
+	if ((*pivot)->len_arr)
+		free((*pivot)->len_arr);
+	if ((*pivot)->data)
+	{
+		while ((*pivot)->data_len--)
+		{
+			free((*pivot)->data[(*pivot)->data_len].arr);
+		}
+		free((*pivot)->data);
+	}
+	free(*pivot);
+	return (*pivot);
+}
+
+void	ft_free_ab(t_d_list_header **a, t_d_list_header **b)
+{
+	free(*a);
+	free(*b);
+}
+
 t_d_list	*ft_push_swap(t_d_list *memory)
 {
 	t_d_list_header	*a;
@@ -78,7 +102,7 @@ t_d_list	*ft_push_swap(t_d_list *memory)
 	else
 		memory = ft_pivot_sort(a, b, pivot);
 	free(result);
-	free(a);
-	free(b);
+	ft_pivot_free(&pivot);
+	ft_free_ab(&a, &b);
 	return (memory);
 }

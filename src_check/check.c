@@ -6,22 +6,20 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 04:29:58 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/09/01 22:21:42 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/09/24 17:54:28 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_doubly_list.h>
-#include <ft_push_swap.h>
 #include <libft.h>
-#include <ft_quick_sort.h>
-#include <ft_printf.h>
-#include <ft_check.h>
+#include <ft_push_swap.h>
+#include <ft_memory.h>
 
 int	ft_input_error(int ar, char **av)
 {
 	char	*str;
 
-	if (ar == 1)
+	if (ar == 1 && ft_warring_m("input nothing"))
 		exit(0);
 	while (ar-- > 1 && ft_ptrcpy((void **)&str, av[ar]))
 	{
@@ -29,7 +27,7 @@ int	ft_input_error(int ar, char **av)
 		{
 			if (*str == 0x20 || ft_isdigit(*str) || *str == '+' || *str == '-')
 				str++;
-			else if (ft_printf("Error\n"))
+			else if (ft_error_m("input digit only"))
 				exit(0);
 		}
 	}
@@ -45,6 +43,8 @@ int	main(int ar, char **av)
 	if (ft_input_error(ar, av))
 		return (0);
 	memory = ft_make_memory(ar, av);
+	while (memory->prev)
+		memory = memory->prev;
 	quick_sort = ft_check(memory);
 	ft_d_list_free(&quick_sort, free);
 	return (1);

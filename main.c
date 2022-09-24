@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 04:29:58 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/09/24 15:49:32 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/09/24 17:54:44 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int	main(int ar, char **av)
 	while (memory->prev)
 		memory = memory->prev;
 	memory = ft_push_swap(memory);
+	ft_d_list_free(&memory, free);
 	return (1);
 }

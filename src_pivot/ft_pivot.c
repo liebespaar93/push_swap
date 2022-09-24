@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:28:12 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/09/24 15:30:41 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/09/24 17:31:06 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ t_pivot	*ft_pivot_init(t_d_list *memory)
 		pivot->len *= 3;
 	pivot->arrow = ft_arrow(pivot->index);
 	pivot->len_arr = ft_len_arr(pivot);
+	pivot->data_len = pivot->len;
 	if (!ft_zeromalloc((void **)&pivot->data, sizeof(t_pdata) * pivot->len))
 		return (NULL);
 	return (pivot);
