@@ -6,7 +6,7 @@
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 04:29:58 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/09/01 22:21:53 by kyoulee          ###   ########.fr       */
+/*   Updated: 2022/09/24 15:49:32 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	main(int ar, char **av)
 	if (ft_input_error(ar, av))
 		return (0);
 	memory = ft_make_memory(ar, av);
+	while (memory->prev)
+		memory = memory->prev;
 	memory = ft_push_swap(memory);
 	return (1);
 }

@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_pivot.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/24 15:28:12 by kyoulee           #+#    #+#             */
+/*   Updated: 2022/09/24 15:30:41 by kyoulee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <libft.h>
 #include <ft_pivot.h>
 #include <ft_doubly_list.h>
 
-int *ft_arrow_init(int *arrow, int deep)
+int	*ft_arrow_init(int *arrow, int deep)
 {
-	int i;
-	int re_i;
+	int	i;
+	int	re_i;
 
 	i = 0;
 	if (deep % 2)
@@ -22,12 +33,12 @@ int *ft_arrow_init(int *arrow, int deep)
 			arrow[i + i + re_i] = !arrow[i - 1 - re_i];
 			re_i++;
 		}
-		i *= 3;	
+		i *= 3;
 	}
 	return (arrow);
 }
 
-int *ft_arrow(int	len)
+int	*ft_arrow(int len)
 {
 	int		*arrow;
 	int		i;
@@ -43,41 +54,32 @@ int *ft_arrow(int	len)
 	return (arrow);
 }
 
-int *ft_len_arr(t_pivot *pivot)
+int	*ft_len_arr(t_pivot *pivot)
 {
-	int *len_arr;
+	int	*len_arr;
 	int	i;
+	int	index;
 
 	if (!ft_zeromalloc((void **)&len_arr, sizeof(int) * pivot->len))
 		return (NULL);
-	i = 0;
 	if (pivot->index / pivot->len >= 3.0)
-	{
-		while (i < pivot->len)
-			len_arr[i++] = 3; 
-	}
+		index = 3;
 	if (pivot->index / pivot->len >= 2.0)
-	{
-		while (i < pivot->len)
-			len_arr[i++] = 2; 
-	}
+		index = 2;
 	else if (pivot->index / pivot->len >= 1.0)
-	{
-		while (i < pivot->len)
-			len_arr[i++] = 1;
-	}
+		index = 1;
 	else
-	{
-		while (i < pivot->len)
-			len_arr[i++] = 0;
-	}
+		index = 0;
+	i = 0;
+	while (i < pivot->len)
+		len_arr[i++] = index;
 	i = 0;
 	while (i < pivot->index % pivot->len)
 		len_arr[i++] += 1;
 	return (len_arr);
 }
 
-t_pivot *ft_pivot_init(t_d_list *memory)
+t_pivot	*ft_pivot_init(t_d_list *memory)
 {
 	t_d_list	*temp;
 	t_pivot		*pivot;

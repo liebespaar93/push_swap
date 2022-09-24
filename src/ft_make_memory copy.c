@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 15:32:57 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/09/24 15:55:42 by kyoulee          ###   ########.fr       */
+/*   Created: 2022/09/24 14:04:23 by kyoulee           #+#    #+#             */
+/*   Updated: 2022/09/24 14:26:19 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,22 @@ int	*ft_split_atoi(char *str, char c)
 	return (split_int);
 }
 
-int	ft_error_null(char **av, int i[3])
+void	ft_memory_write(t_d_list *new, int *split_atoi, int i[3])
 {
-	if (*av[i[0]] == 0 && ft_error_m("some input is NULL"))
-		exit(0);
-	return (1);
+	int	*temp;
+
+	i[2] = 0;
+	while (i[2] < i[1])
+	{
+		if (!ft_zeromalloc((void **)&temp, sizeof(int)))
+			;
+		if (ft_in_list_p(new, split_atoi[i[2]]) \
+			&& ft_error_m("same number in input"))
+			exit(0);
+		*temp = split_atoi[i[2]];
+		new = ft_d_list_add_next(new, ft_d_list_new(temp));
+		i[2]++;
+	}	
 }
 
 t_d_list	*ft_make_memory(int ar, char **av)
@@ -94,21 +105,16 @@ t_d_list	*ft_make_memory(int ar, char **av)
 
 	new = NULL;
 	i[0] = 0;
-	while (++i[0] < ar && ft_error_null(av, i))
+	while (++i[0] < ar)
 	{
+		if (*av[i[0]] == 0 && ft_error_m("some input is NULL"))
+			exit(0);
 		i[1] = ft_split_len(av[i[0]], ' ');
 		split_atoi = ft_split_atoi(av[i[0]], ' ');
-		i[2] = 0;
-		while (i[2] < i[1])
-		{
-			if (!ft_zeromalloc((void **)&temp, sizeof(int)))
-				return (NULL);
-			if (ft_in_list_p(new, split_atoi[i[2]]) && ft_error_m("same num"))
-				exit(0);
-			*temp = split_atoi[i[2]++];
-			new = ft_d_list_add_next(new, ft_d_list_new(temp));
-		}
+		ft_memory_write(new, split_atoi, *i);
 		free(split_atoi);
 	}
+	while (new->prev)
+		new = new->prev;
 	return (new);
 }

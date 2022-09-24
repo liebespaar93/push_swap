@@ -6,7 +6,7 @@
 #    By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/31 10:01:30 by kyoulee           #+#    #+#              #
-#    Updated: 2022/09/15 10:24:42 by kyoulee          ###   ########.fr        #
+#    Updated: 2022/09/24 15:23:41 by kyoulee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,9 +115,13 @@ SRC_DOUBLY_LIST_C_SRC =	\
 
 SRC_DOUBLY_LIST_C = $(addprefix $(SRC_DOUBLY_LIST_DIR)/, $(SRC_DOUBLY_LIST_C_SRC))
 
-SRC_PIVOT_C_SRC =	ft_pivot_down.c	\
+SRC_PIVOT_C_SRC =	ft_minmax_hold.c	\
+					ft_pdata.c 		\
+					ft_pivot_down.c	\
 					ft_pivot_sort.c	\
 					ft_pivot_split.c	\
+					ft_pivot_split_a.c	\
+					ft_pivot_split_b.c	\
 					ft_pivot_up.c		\
 					ft_pivot.c			\
 					ft_sort.c
