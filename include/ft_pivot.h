@@ -30,6 +30,7 @@ int	ft_pivot_down(t_d_list_header *a, t_d_list_header *b, int len);
 
 t_d_list	*ft_sort_two(t_d_list_header *a, int *result);
 t_d_list	*ft_sort_three(t_d_list_header *a, int *result);
+t_d_list	*ft_sort_five(t_d_list_header *a, t_d_list_header *b, int *result);
 t_d_list *ft_pivot_sort(t_d_list_header *a, t_d_list_header *b, t_pivot *pivot);
 
 void	 ft_pdata_init(t_d_list_header *header, t_pivot *pivot, int index);

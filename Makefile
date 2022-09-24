@@ -80,9 +80,12 @@ NO_COLOR = \033[0m
 
 ROOTDIR = $(abspath $(dir $(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))))
 SRC_DIR = $(ROOTDIR)/src
-SRC_PUSH_SWAP_DIR = $(ROOTDIR)/src_push_swap
 SRC_DOUBLY_LIST_DIR = $(ROOTDIR)/src_doubly_list
+SRC_PIVOT_DIR = $(ROOTDIR)/src_pivot
+SRC_PUSH_SWAP_DIR = $(ROOTDIR)/src_push_swap
 SRC_QUICK_SORT_DIR = $(ROOTDIR)/src_quick_sort
+SRC_STACK_DIR = $(ROOTDIR)/src_stack
+
 
 SRC_CHECK_DIR = $(ROOTDIR)/src_check
 
@@ -99,18 +102,9 @@ FT_PRINTF_DIR = $(ROOTDIR)/modules/ft_printf
 INCLUDE_FT_PRINTF_DIR = $(FT_PRINTF_DIR)/include
 
 #####***** SRC *****#####
-SRC_C_SRC =	ft_printf_stack.c	\
-			ft_make_memory.c
+SRC_C_SRC =	ft_make_memory.c
 
 SRC_C = $(addprefix $(SRC_DIR)/, $(SRC_C_SRC))
-
-SRC_PUSH_SWAP_C_SRC =	ft_push_swap.c	\
-						ft_pp.c		\
-						ft_rr.c		\
-						ft_rrr.c	\
-						ft_ss.c
-
-SRC_PUSH_SWAP_C = $(addprefix $(SRC_PUSH_SWAP_DIR)/, $(SRC_PUSH_SWAP_C_SRC))
 
 SRC_DOUBLY_LIST_C_SRC =	\
 						ft_doubly_list_add.c		\
@@ -121,17 +115,37 @@ SRC_DOUBLY_LIST_C_SRC =	\
 
 SRC_DOUBLY_LIST_C = $(addprefix $(SRC_DOUBLY_LIST_DIR)/, $(SRC_DOUBLY_LIST_C_SRC))
 
-SRC_QUICK_SORT_C_SRC =	ft_memory.c			\
-						ft_pivot_split.c	\
-						ft_pivot.c			\
-						ft_quick_sort.c
+SRC_PIVOT_C_SRC =	ft_pivot_down.c	\
+					ft_pivot_sort.c	\
+					ft_pivot_split.c	\
+					ft_pivot_up.c		\
+					ft_pivot.c			\
+					ft_sort.c
+
+SRC_PIVOT_C = $(addprefix $(SRC_PIVOT_DIR)/, $(SRC_PIVOT_C_SRC))
+
+SRC_PUSH_SWAP_C_SRC =	ft_push_swap.c
+
+SRC_PUSH_SWAP_C = $(addprefix $(SRC_PUSH_SWAP_DIR)/, $(SRC_PUSH_SWAP_C_SRC))
+
+SRC_QUICK_SORT_C_SRC =	ft_quick_sort.c
 
 SRC_QUICK_SORT_C = $(addprefix $(SRC_QUICK_SORT_DIR)/, $(SRC_QUICK_SORT_C_SRC))
 
+SRC_STACK_C_SRC =	ft_pp.c	\
+						ft_rr.c	\
+						ft_rrr.c	\
+						ft_ss.c
+
+SRC_STACK_C = $(addprefix $(SRC_STACK_DIR)/, $(SRC_STACK_C_SRC))
+
+
 OBJS =	$(SRC_C:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)	\
+		$(SRC_PIVOT_C:$(SRC_PIVOT_DIR)/%.c=$(OBJ_DIR)/%.o)	\
 		$(SRC_PUSH_SWAP_C:$(SRC_PUSH_SWAP_DIR)/%.c=$(OBJ_DIR)/%.o)	\
 		$(SRC_DOUBLY_LIST_C:$(SRC_DOUBLY_LIST_DIR)/%.c=$(OBJ_DIR)/%.o)	\
-		$(SRC_QUICK_SORT_C:$(SRC_QUICK_SORT_DIR)/%.c=$(OBJ_DIR)/%.o)
+		$(SRC_QUICK_SORT_C:$(SRC_QUICK_SORT_DIR)/%.c=$(OBJ_DIR)/%.o)	\
+		$(SRC_STACK_C:$(SRC_STACK_DIR)/%.c=$(OBJ_DIR)/%.o)	\
 
 
 ## check ##
@@ -157,7 +171,7 @@ test :
 	@echo "$(OBJS) -o $(TARGET)"
 
 
-$(TARGET) : $(OBJS) $(LIBFT) $(FT_PRINTF) $(CHECK)
+$(TARGET) : $(OBJS) $(LIBFT) $(FT_PRINTF)
 	$(CC) main.c $(CFLAGS) $(IFLAGS) $(LDFLAGS) $(LDLIBS) $(OBJS) -o $(TARGET)
 	@echo "$(FG_LMAGENTA)$(CC) $(FG_BLUE) $(CFLAGS)"
 	@(for i in $(IFLAGS) $(LDFLAGS); do echo $$i; done)
@@ -174,6 +188,9 @@ $(OBJ_DIR) :
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
 
+$(OBJ_DIR)/%.o : $(SRC_PIVOT_DIR)/%.c
+	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
+
 $(OBJ_DIR)/%.o : $(SRC_PUSH_SWAP_DIR)/%.c
 	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
 
@@ -181,6 +198,9 @@ $(OBJ_DIR)/%.o : $(SRC_DOUBLY_LIST_DIR)/%.c
 	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
 
 $(OBJ_DIR)/%.o : $(SRC_QUICK_SORT_DIR)/%.c
+	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/%.o : $(SRC_STACK_DIR)/%.c
 	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
 
 $(OBJ_DIR)/%.o : $(SRC_CHECK_DIR)/%.c

@@ -1,13 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_pivot_sort.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/23 15:26:20 by kyoulee           #+#    #+#             */
+/*   Updated: 2022/09/23 16:38:37 by kyoulee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <libft.h>
 #include <ft_pivot.h>
 #include <ft_doubly_list.h>
 #include <ft_stack.h>
 
-
-int ft_min_hold(t_pdata *hold[3])
+int	ft_min_hold(t_pdata *hold[3])
 {
-	int min;
+	int	min;
 
 	min = -1;
 	if (hold[0]->len != hold[0]->index)
@@ -131,11 +141,11 @@ void ft_set_split_a(t_d_list_header *a, t_d_list_header *b, int len)
 		ft_pb(a,b);
 }
 
-void ft_pivot_split_a(t_d_list_header *a, t_d_list_header *b, t_pivot *pivot)
+void	ft_pivot_split_a(t_d_list_header *a, t_d_list_header *b, t_pivot *pivot)
 {
-	int i;
-	int minmax;
-	t_pdata *hold[3];
+	int		i;
+	int		minmax;
+	t_pdata	*hold[3];
 
 	i = 0;
 	while (i++ < pivot->len / 3)
@@ -180,76 +190,87 @@ void ft_pivot_split_a(t_d_list_header *a, t_d_list_header *b, t_pivot *pivot)
 			hold[2]->index++;
 		}
 	}
-	pivot->len = pivot->len / 3;
 }
 
-void ft_set_split_b(t_d_list_header *a, t_d_list_header *b, int len)
+void	ft_set_split_b(t_d_list_header *a, t_d_list_header *b, int len)
 {
 	while (len--)
 		ft_pa(a,b);
 }
-void ft_pivot_split_b(t_d_list_header *a, t_d_list_header *b, t_pivot *pivot)
+
+void	ft_find_pdata_b(t_d_list_header *a, t_d_list_header *b, \
+	t_pdata	*hold[3], t_pivot *pivot)
 {
-	int i;
-	int minmax;
-	t_pdata *hold[3];
+	hold[0] = ft_find_pdata(pivot, *b->head->data);
+	hold[1] = ft_find_pdata(pivot, *b->tail->data);
+	hold[2] = ft_find_pdata(pivot, *a->tail->data);
+}
+
+int	ft_minmax_hold(t_pivot *pivot, t_pdata *hold[3], int i)
+{
+	if (!pivot->arrow[i])
+		return (ft_min_hold(hold));
+	else
+		return (ft_max_hold(hold));
+}
+void	ft_for_norn_arr(t_d_list_header *a, t_pdata *hold[3], \
+	t_pivot *pivot, int i)
+{
+	if (i < pivot->len / 3 / 3)
+		ft_pdata_arr_up(a, hold[0]->len + hold[1]->len + hold[2]->len, \
+			&pivot->data[i]);
+	else
+		ft_pdata_arr_down(a, hold[0]->len + hold[1]->len + hold[2]->len, \
+			&pivot->data[i]);
+
+}
+void	ft_pivot_split_b(t_d_list_header *a, t_d_list_header *b, \
+	t_pivot *pivot)
+{
+	int		i;
+	int		minmax;
+	t_pdata	*hold[3];
 
 	i = 0;
 	while (i++ < pivot->len / 3)
 		ft_set_split_b(a, b, pivot->data[pivot->len - i].len);
-	hold[0] = ft_find_pdata(pivot, *b->head->data);
-	hold[1] = ft_find_pdata(pivot, *b->tail->data);
-	hold[2] = ft_find_pdata(pivot, *a->tail->data);
+	ft_find_pdata_b(a, b, hold, pivot);
 	i = 0;
 	while (i < pivot->len / 3)
 	{
-		if (!pivot->arrow[i])
-			minmax = ft_min_hold(hold);
-		else
-			minmax = ft_max_hold(hold);
+		minmax = ft_minmax_hold(pivot, hold, i);
 		if (minmax == -1)
 		{
-			if (i < pivot->len / 3 / 3)
-				ft_pdata_arr_up(a, hold[0]->len + hold[1]->len + hold[2]->len, &pivot->data[i]);
-			else
-				ft_pdata_arr_down(a, hold[0]->len + hold[1]->len + hold[2]->len, &pivot->data[i]);
+			ft_for_norn_arr(a, hold, pivot, i);
 			i++;
 			if (i >= pivot->len / 3)
 				break;
-			hold[0] = ft_find_pdata(pivot, *b->head->data);
-			hold[1] = ft_find_pdata(pivot, *b->tail->data);
-			hold[2] = ft_find_pdata(pivot, *a->tail->data);
+			ft_find_pdata_b(a, b, hold, pivot);
 		}
-		else if (minmax == 0)
-		{
-			ft_pa(a,b);
+		else if (minmax == 0 && ft_pa(a, b))
 			hold[0]->index++;
-		}
-		else if (minmax == 1)
-		{
-			ft_rrb(b);
-			ft_pa(a,b);
+		else if (minmax == 1 && ft_rrb(b) && ft_pa(a, b))
 			hold[1]->index++;
-		}
-		else if (minmax == 2)
-		{
-			ft_rra(a);
+		else if (minmax == 2 && ft_rra(a))
 			hold[2]->index++;
-		}
 	}
-	pivot->len = pivot->len / 3;
 }
 
-t_d_list *ft_pivot_sort(t_d_list_header *a, t_d_list_header *b, t_pivot *pivot)
+t_d_list	*ft_pivot_sort(t_d_list_header *a, t_d_list_header *b, \
+	t_pivot *pivot)
 {
 	pivot = ft_pivot_split(a, b, pivot);
 	while (pivot->deep)
 	{
 		if (a->head)
 			ft_pivot_split_a(a, b, pivot);
-		else if(b->head)
+		else if (b->head)
 			ft_pivot_split_b(a, b, pivot);
+		pivot->len = pivot->len / 3;
 		pivot->deep--;
 	}
+	if (b->head)
+		while (pivot->index--)
+			ft_pa(a, b);
 	return (a->head);
 }

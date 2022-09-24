@@ -51,6 +51,11 @@ int *ft_len_arr(t_pivot *pivot)
 	if (!ft_zeromalloc((void **)&len_arr, sizeof(int) * pivot->len))
 		return (NULL);
 	i = 0;
+	if (pivot->index / pivot->len >= 3.0)
+	{
+		while (i < pivot->len)
+			len_arr[i++] = 3; 
+	}
 	if (pivot->index / pivot->len >= 2.0)
 	{
 		while (i < pivot->len)
