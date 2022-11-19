@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_quick_sort.h>
 #include <libft.h>
 
 void	ft_swap(int *array, int i, int j)

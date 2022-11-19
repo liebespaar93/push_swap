@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_push_swap.h>
 #include <libft.h>
-#include <ft_color.h>
 #include <ft_printf.h>
+#include <ft_doubly_list.h>
 
 int	ft_sa(t_d_list_header *a_ptr)
 {

@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_stack.h                                  :+:      :+:    :+:   */
+/*   ft_memory.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyoulee <kyoulee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 21:18:31 by kyoulee           #+#    #+#             */
-/*   Updated: 2022/08/28 13:30:17 by kyoulee          ###   ########.fr       */
+/*   Created: 2022/09/24 15:44:22 by kyoulee           #+#    #+#             */
+/*   Updated: 2022/09/24 15:44:24 by kyoulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_STACK_H
-# define FT_PRINTF_STACK_H
+#ifndef FT_MEMORY_H
+# define FT_MEMORY_H
 
 # include <ft_doubly_list.h>
 
-int		ft_printf_stack(t_d_list *d_list, t_pivot *pivot, \
-	char *str);
-void	ft_printf_ab(t_d_list_header *a, t_d_list_header *b, \
-	t_pivot *pivot);
-
+t_d_list	*ft_make_memory(int ar, char **av);
 #endif
